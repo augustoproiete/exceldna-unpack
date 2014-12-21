@@ -1,0 +1,19 @@
+<DnaLibrary Name="ExcelDnaUnpack.IntegrationTests Add-In" RuntimeVersion="v4.0">
+  <ExternalLibrary Path="ExcelDnaUnpack.IntegrationTests.dll" LoadFromBytes="true" Pack="true" />
+
+  <Project Language="C#">
+    <SourceItem Path="SourceFileToBePacked.cs" Pack="true" />
+  </Project>
+
+  <Image Name="TestImage" Path="TestImage.png" Pack="true" />
+
+  <![CDATA[
+        Public Module MyVBFunctions
+
+            Function AddNumbersInVb(x, y)
+                AddNumbersInVb = x + y
+            End Function
+
+        End Module
+    ]]>
+</DnaLibrary>

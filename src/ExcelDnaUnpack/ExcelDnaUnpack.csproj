@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F772CD1D-70EF-4B5C-B16A-B9CFE270AF6A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExcelDnaUnpack</RootNamespace>
+    <AssemblyName>ExcelDnaUnpack</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Lzma\CRC.cs" />
+    <Compile Include="Lzma\ICoder.cs" />
+    <Compile Include="Lzma\IMatchFinder.cs" />
+    <Compile Include="Lzma\InBuffer.cs" />
+    <Compile Include="Lzma\LzBinTree.cs" />
+    <Compile Include="Lzma\LzInWindow.cs" />
+    <Compile Include="Lzma\LzmaBase.cs" />
+    <Compile Include="Lzma\LzmaDecoder.cs" />
+    <Compile Include="Lzma\LzmaEncoder.cs" />
+    <Compile Include="Lzma\LzOutWindow.cs" />
+    <Compile Include="Lzma\OutBuffer.cs" />
+    <Compile Include="Lzma\RangeCoder.cs" />
+    <Compile Include="Lzma\RangeCoderBit.cs" />
+    <Compile Include="Lzma\RangeCoderBitTree.cs" />
+    <Compile Include="Lzma\SevenZipHelper.cs" />
+    <Compile Include="Options.cs" />
+    <Compile Include="ResourceHelpers\IResourceHeader.cs" />
+    <Compile Include="ResourceHelpers\IResourceReader.cs" />
+    <Compile Include="ResourceHelpers\IResourceRecord.cs" />
+    <Compile Include="ResourceHelpers\Extensions\IResourceRecordExtensions.cs" />
+    <Compile Include="ResourceHelpers\ResourceHeader.cs" />
+    <Compile Include="ResourceHelpers\ResourceReader.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceHelpers\ResourceRecord.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lzma\LICENSE.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

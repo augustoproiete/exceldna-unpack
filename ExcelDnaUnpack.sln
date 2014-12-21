@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelDnaUnpack", "src\ExcelDnaUnpack\ExcelDnaUnpack.csproj", "{F772CD1D-70EF-4B5C-B16A-B9CFE270AF6A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{10908DF3-F4E4-4A9D-8A30-667F36F79831}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelDnaUnpack.IntegrationTests", "tests\ExcelDnaUnpack.IntegrationTests\ExcelDnaUnpack.IntegrationTests.csproj", "{D0352336-2784-4A55-AEB6-592A5433A244}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F772CD1D-70EF-4B5C-B16A-B9CFE270AF6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F772CD1D-70EF-4B5C-B16A-B9CFE270AF6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F772CD1D-70EF-4B5C-B16A-B9CFE270AF6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F772CD1D-70EF-4B5C-B16A-B9CFE270AF6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0352336-2784-4A55-AEB6-592A5433A244}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0352336-2784-4A55-AEB6-592A5433A244}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0352336-2784-4A55-AEB6-592A5433A244}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0352336-2784-4A55-AEB6-592A5433A244}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D0352336-2784-4A55-AEB6-592A5433A244} = {10908DF3-F4E4-4A9D-8A30-667F36F79831}
+	EndGlobalSection
+EndGlobal
