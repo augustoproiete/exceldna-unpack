@@ -21,11 +21,10 @@ If you like or are using this project please give it a star. Thanks!
 
 ## Release History
 
- * **[v1.0.0](https://github.com/CaioProiete/ExcelDnaUnpack/releases/tag/v1.0.0)** - 2014-12-21
-   - Initial version
+Click on the [Releases](https://github.com/augustoproiete/ExcelDnaUnpack/releases) tab on GitHub.
 
 ## License   
-Copyright 2014 Caio Proiete
+Copyright 2014-2020 C. Augusto Proiete
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
