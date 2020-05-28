@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 #else
 [assembly: AssemblyConfiguration("Release")]
 #endif
-[assembly: AssemblyCompany("caioproiete.net")]
+[assembly: AssemblyCompany("augustoproiete.net")]
 [assembly: AssemblyProduct("ExcelDnaUnpack")]
-[assembly: AssemblyCopyright("Copyright © Caio Proiete 2014")]
+[assembly: AssemblyCopyright("Copyright 2014-2020 C. Augusto Proiete & Contributors")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
