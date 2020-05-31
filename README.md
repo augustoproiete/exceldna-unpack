@@ -1,6 +1,16 @@
 # ExcelDnaUnpack
 
-ExcelDnaUnpack is a command-line utility to extract the contents of ExcelDna add-ins packed with ExcelDnaPack
+ExcelDnaUnpack is a command-line utility to extract the contents of Excel-DNA add-ins that have been packed with ExcelDnaPack
+
+## Give a Star! :star:
+
+If you like or are using this project please give it a star. Thanks!
+
+## Getting Started
+
+Download the latest version of ExcelDnaUnpack from the [Releases tab](https://github.com/augustoproiete/ExcelDnaUnpack/releases), and extract the file `ExcelDnaUnpack{version}.zip` to the location where your `.xll` add-in is stored.
+
+Run `ExcelDnaUnpack.exe --xllFile=NameOfYourAddIn.xll`
 
 ```
 Usage: ExcelDnaUnpack.exe [<options>]
@@ -14,10 +24,6 @@ Where [<options>] is any of:
 Example: ExcelDnaUnpack.exe --xllFile=MyAddins\FirstAddin-packed.xll
          The extracted files will be saved to MyAddins\unpacked
 ```
-
-## Give a Star! :star:
-
-If you like or are using this project please give it a star. Thanks!
 
 ## Release History
 
