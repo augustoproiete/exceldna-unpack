@@ -19,7 +19,7 @@ namespace ExcelDnaUnpack
             try
             {
                 var appVersion = typeof(Program).Assembly.GetCustomAttributes(true)
-                    .OfType<AssemblyFileVersionAttribute>().Single().Version;
+                    .OfType<AssemblyInformationalVersionAttribute>().Single().InformationalVersion;
 
                 var appTitle = $"Excel-DNA Unpack Tool, version {appVersion}";
 
