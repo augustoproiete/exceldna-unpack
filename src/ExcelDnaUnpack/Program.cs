@@ -23,7 +23,7 @@ namespace ExcelDnaUnpack
 
                 var appTitle = $"Excel-DNA Unpack Tool, version {appVersion}";
 
-                Console.WriteLine(appTitle);
+                Console.WriteLine(appTitle, ConsoleColor.White);
                 Console.WriteLine();
 
                 var options = new OptionSet
@@ -49,13 +49,13 @@ namespace ExcelDnaUnpack
             }
             catch (ApplicationException ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message, ConsoleColor.Red);
                 Console.WriteLine();
                 return 1;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine($"{ex.Message}{Environment.NewLine}{ex}", ConsoleColor.Red);
                 return 1;
             }
         }
@@ -77,7 +77,7 @@ namespace ExcelDnaUnpack
                 _outFolder = Path.Combine(Path.GetFullPath(Environment.CurrentDirectory), "unpacked");
             }
 
-            Console.Write("Analyzing {0} . . . ", Path.GetFileName(_xllFile));
+            Console.Write($"Analyzing {Path.GetFileName(_xllFile)} . . . ");
 
             ExtractAllResources();
         }
@@ -88,7 +88,7 @@ namespace ExcelDnaUnpack
 
             using (var reader = new ResourceReader(_xllFile))
             {
-                Console.WriteLine("OK");
+                Console.WriteLine("OK", ConsoleColor.Green);
                 Console.WriteLine();
 
                 if (reader.RecordCount > 0 && !Directory.Exists(_outFolder))
@@ -100,7 +100,7 @@ namespace ExcelDnaUnpack
                 while ((resource = reader.Read()) != null)
                 {
                     var outputFileName = GetFileNameWithExtension(resource);
-                    Console.Write("Extracting {0} ({1}) . . . ", Path.GetFileName(outputFileName), resource.Type);
+                    Console.Write($"Extracting {Path.GetFileName(outputFileName)} ({resource.Type}) . . . ");
 
                     if ("__MAIN__.dna".Equals(outputFileName, StringComparison.Ordinal))
                     {
@@ -124,26 +124,23 @@ namespace ExcelDnaUnpack
                         stream.Write(binaryData, 0, binaryData.Length);
                     }
 
-                    Console.WriteLine("OK");
+                    Console.WriteLine("OK", ConsoleColor.Green);
                 }
 
                 if (!foundMainDnaResource)
                 {
-                    Console.WriteLine(
-                        $"__MAIN__.dna file not found. Are you sure {_xllFile} was built with Excel-DNA?");
+                    Console.WriteLine($"__MAIN__.dna file not found. Are you sure {_xllFile} was built with Excel-DNA?",
+                        ConsoleColor.Yellow);
                 }
             }
         }
 
         private static void ShowHelp(OptionSet options)
         {
-            Console.ResetColor();
             Console.WriteLine("ExcelDnaUnpack is a command-line utility to extract the contents of Excel-DNA add-ins packed with ExcelDnaPack.");
             Console.WriteLine();
             Console.Write("Usage: ");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("ExcelDnaUnpack.exe [<options>]");
-            Console.ResetColor();
+            Console.WriteLine("ExcelDnaUnpack.exe [<options>]", ConsoleColor.White);
             Console.WriteLine();
             Console.WriteLine("Where [<options>] is any of: ");
             Console.WriteLine();
