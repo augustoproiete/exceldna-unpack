@@ -1,1 +1,1 @@
-See: https://github.com/augustoproiete/ExcelDnaUnpack/releases
+See: https://github.com/augustoproiete/exceldna-unpack/releases
