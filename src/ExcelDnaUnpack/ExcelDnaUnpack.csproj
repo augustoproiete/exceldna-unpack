@@ -5,6 +5,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>exceldna-unpack</AssemblyName>
     <RootNamespace>ExcelDnaUnpack</RootNamespace>
+
+    <AssemblyOriginatorKeyFile>../../assets/exceldna-unpack.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
   </PropertyGroup>
 
   <ItemGroup>
