@@ -27,9 +27,10 @@ namespace ExcelDnaUnpack
 
                 var options = new OptionSet
                 {
-                    {"xllFile=", "The XLL file to be unpacked; e.g. MyAddIn-packed.xll", v => _xllFile = v},
-                    {"outFolder=", "[Optional] The folder into which the extracted files will be written; defaults to '.\\unpacked'", v => _outFolder = v },
-                    {"overwrite", "[Optional] Allow existing files of the same name to be overwritten", v => _overwrite = true },
+                    { "<>", v => _xllFile = v },
+                    { "xllFile=", "The XLL file to be unpacked; e.g. MyAddIn-packed.xll", v => _xllFile = v },
+                    { "outFolder=", "[Optional] The folder into which the extracted files will be written; defaults to '.\\unpacked'", v => _outFolder = v },
+                    { "overwrite", "[Optional] Allow existing files of the same name to be overwritten", v => _overwrite = true },
                 };
 
                 options.Parse(args);
