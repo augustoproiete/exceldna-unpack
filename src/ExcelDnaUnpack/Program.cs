@@ -84,6 +84,8 @@ namespace ExcelDnaUnpack
 
         private static void ExtractAllResources()
         {
+            var foundMainDnaResource = false;
+
             using (var reader = new ResourceReader(_xllFile))
             {
                 Console.WriteLine("OK");
@@ -99,6 +101,11 @@ namespace ExcelDnaUnpack
                 {
                     var outputFileName = GetFileNameWithExtension(resource);
                     Console.Write("Extracting {0} ({1}) . . . ", Path.GetFileName(outputFileName), resource.Type);
+
+                    if ("__MAIN__.dna".Equals(outputFileName, StringComparison.Ordinal))
+                    {
+                        foundMainDnaResource = true;
+                    }
 
                     var outputFilePath = Path.Combine(_outFolder, outputFileName);
 
@@ -118,6 +125,12 @@ namespace ExcelDnaUnpack
                     }
 
                     Console.WriteLine("OK");
+                }
+
+                if (!foundMainDnaResource)
+                {
+                    Console.WriteLine(
+                        $"__MAIN__.dna file not found. Are you sure {_xllFile} was built with Excel-DNA?");
                 }
             }
         }
