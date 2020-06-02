@@ -12,6 +12,7 @@ namespace ExcelDnaUnpack
         private static string _xllFile;
         private static bool _overwrite;
         private static string _outFolder;
+        private static bool _showHelp;
 
         public static int Main(string[] args)
         {
@@ -29,13 +30,15 @@ namespace ExcelDnaUnpack
                 {
                     { "<>", v => _xllFile = v },
                     { "xllFile=", "The XLL file to be unpacked; e.g. MyAddIn-packed.xll", v => _xllFile = v },
-                    { "outFolder=", "[Optional] The folder into which the extracted files will be written; defaults to '.\\unpacked'", v => _outFolder = v },
-                    { "overwrite", "[Optional] Allow existing files of the same name to be overwritten", v => _overwrite = true },
+                    { "outFolder=", "[Optional] The folder into which the extracted files will be written; defaults to `.\\unpacked`", v => _outFolder = v },
+                    { "overwrite", "[Optional] Allow existing files of the same name to be overwritten; default to `false`", v => _overwrite = true },
+                    { "help",  "Show this message and exit", v => _showHelp = !(v is null) },
+
                 };
 
                 options.Parse(args);
 
-                if (args.Length < 1)
+                if (args.Length < 1 || _showHelp)
                 {
                     ShowHelp(options);
                     return 1;
@@ -122,7 +125,7 @@ namespace ExcelDnaUnpack
         private static void ShowHelp(OptionSet options)
         {
             Console.ResetColor();
-            Console.WriteLine("ExcelDnaUnpack is a command-line utility to extract the contents of ExcelDna add-ins packed with ExcelDnaPack.");
+            Console.WriteLine("ExcelDnaUnpack is a command-line utility to extract the contents of Excel-DNA add-ins packed with ExcelDnaPack.");
             Console.WriteLine();
             Console.Write("Usage: ");
             Console.ForegroundColor = ConsoleColor.White;
