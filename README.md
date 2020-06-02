@@ -10,10 +10,10 @@ If you like or are using this project please give it a star. Thanks!
 
 Download the latest version of ExcelDna-Unpack from the [Releases tab](https://github.com/augustoproiete/exceldna-unpack/releases), and extract the file `exceldna-unpack-{version}{rid}.zip` to the location where your `.xll` add-in is stored.
 
-Run `exceldna-unpack.exe --xllFile=NameOfYourAddIn.xll`
+Run `exceldna-unpack --xllFile=NameOfYourAddIn.xll`
 
 ```
-Usage: exceldna-unpack.exe [<options>]
+Usage: exceldna-unpack [<options>]
 
 Where [<options>] is any of:
 
@@ -21,7 +21,7 @@ Where [<options>] is any of:
 --outFolder=VALUE  [Optional] The folder into which the extracted files will be written; defaults to '.\unpacked'
 --overwrite        [Optional] Allow existing files of the same name to be overwritten
 
-Example: exceldna-unpack.exe --xllFile=MyAddins\FirstAddin-packed.xll
+Example: exceldna-unpack --xllFile=MyAddins\FirstAddin-packed.xll
          The extracted files will be saved to MyAddins\unpacked
 ```
 

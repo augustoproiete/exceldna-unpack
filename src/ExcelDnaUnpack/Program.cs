@@ -31,7 +31,7 @@ namespace ExcelDnaUnpack
                     { "<>", v => _xllFile = v },
                     { "xllFile=", "The XLL file to be unpacked; e.g. MyAddIn-packed.xll", v => _xllFile = v },
                     { "outFolder=", "[Optional] The folder into which the extracted files will be written; defaults to `.\\unpacked`", v => _outFolder = v },
-                    { "overwrite", "[Optional] Allow existing files of the same name to be overwritten; default to `false`", v => _overwrite = true },
+                    { "overwrite", "[Optional] Allow existing files of the same name to be overwritten; defaults to `false`", v => _overwrite = true },
                     { "help",  "Show this message and exit", v => _showHelp = !(v is null) },
 
                 };
@@ -137,10 +137,10 @@ namespace ExcelDnaUnpack
 
         private static void ShowHelp(OptionSet options)
         {
-            Console.WriteLine("ExcelDnaUnpack is a command-line utility to extract the contents of Excel-DNA add-ins packed with ExcelDnaPack.");
+            Console.WriteLine("ExcelDna-Unpack is a command-line utility to extract the contents of Excel-DNA add-ins packed with ExcelDnaPack.");
             Console.WriteLine();
             Console.Write("Usage: ");
-            Console.WriteLine("ExcelDnaUnpack.exe [<options>]", ConsoleColor.White);
+            Console.WriteLine("exceldna-unpack [<options>]", ConsoleColor.White);
             Console.WriteLine();
             Console.WriteLine("Where [<options>] is any of: ");
             Console.WriteLine();
@@ -148,8 +148,8 @@ namespace ExcelDnaUnpack
             options.WriteOptionDescriptions(Console.Out);
 
             Console.WriteLine();
-            Console.WriteLine(@"Example: ExcelDnaUnpack.exe --xllFile=MyAddins\FirstAddin-packed.xll");
-            Console.WriteLine(@"         The extracted files will be saved to MyAddins\unpacked");
+            Console.WriteLine(@"Example: exceldna-unpack --xllFile=MyAddIns\FirstAddIn-packed.xll");
+            Console.WriteLine(@"         The extracted files will be saved to MyAddIns\unpacked");
         }
 
         private static string GetFileNameWithExtension(IResourceRecord resource)

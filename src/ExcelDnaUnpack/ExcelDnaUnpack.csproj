@@ -3,13 +3,54 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Features>strict</Features>
     <AssemblyName>exceldna-unpack</AssemblyName>
     <RootNamespace>ExcelDnaUnpack</RootNamespace>
 
     <AssemblyOriginatorKeyFile>../../assets/exceldna-unpack.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+
+    <ProductName>ExcelDna-Unpack</ProductName>
+    <ProductUrl>https://github.com/augustoproiete/exceldna-unpack</ProductUrl>
+    <ProductCompanyName>C. Augusto Proiete</ProductCompanyName>
+    <Authors>C. Augusto Proiete &amp; Contributors</Authors>
+    <NeutralLanguage>en-US</NeutralLanguage>
+
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>exceldna-unpack</ToolCommandName>
+
+    <Title>exceldna-unpack</Title>
+    <PackageId>exceldna-unpack</PackageId>
+    <PackageDescription>A command-line utility to extract the contents of Excel-DNA add-ins that have been packed with ExcelDnaPack.</PackageDescription>
+    <PackageTags>exceldna;xll;unpack;cli;dotnet;tool;dotnet-tool;dotnettool;core;excel-dna</PackageTags>
+    <PackageIcon>images\icon.png</PackageIcon>
+    <PackageIconUrl>https://raw.githubusercontent.com/augustoproiete/exceldna-unpack/master/assets/exceldna-unpack-nuget.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/augustoproiete/exceldna-unpack</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReleaseNotes>https://github.com/augustoproiete/exceldna-unpack/releases/tag/v$(Version)</PackageReleaseNotes>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/augustoproiete/exceldna-unpack</RepositoryUrl>
+    <Copyright>Copyright (c) 2014-2020 C. Augusto Proiete &amp; Contributors - Provided under the Apache License, Version 2.0</Copyright>
+
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <TreatSpecificWarningsAsErrors />
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE" Pack="true" Visible="false" PackagePath="" />
+    <None Include="..\..\assets\exceldna-unpack-nuget.png" Pack="true" Visible="false" PackagePath="images\icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="*.DotSettings" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
