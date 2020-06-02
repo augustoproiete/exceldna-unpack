@@ -74,10 +74,7 @@ namespace ExcelDnaUnpack.ResourceHelpers
             Dispose(true);
         }
 
-        public int RecordCount
-        {
-            get { return _resourceHeaders.Count; }
-        }
+        public int RecordCount => _resourceHeaders.Count;
 
         public void Dispose()
         {
@@ -137,7 +134,7 @@ namespace ExcelDnaUnpack.ResourceHelpers
         {
             if (IsIntResource(value))
             {
-                return string.Format("#{0}", value);
+                return $"#{value}";
             }
 
             return Marshal.PtrToStringUni(value);
@@ -153,8 +150,8 @@ namespace ExcelDnaUnpack.ResourceHelpers
             var resourceHandleFind = FindResource(_fileHandle, name, type);
             if (resourceHandleFind == IntPtr.Zero)
             {
-                var message = string.Format("FindResource couldn't find resource '{0}' of type '{1}'. GetLastError={2}",
-                    name, type, Marshal.GetLastWin32Error());
+                var message =
+                    $"FindResource couldn't find resource '{name}' of type '{type}'. GetLastError={Marshal.GetLastWin32Error()}";
 
                 throw new Win32Exception(message);
             }
@@ -162,8 +159,8 @@ namespace ExcelDnaUnpack.ResourceHelpers
             var resourceHandleLoad = LoadResource(_fileHandle, resourceHandleFind);
             if (resourceHandleLoad == IntPtr.Zero)
             {
-                var message = string.Format("LoadResource couldn't load resource '{0}' of type '{1}'. GetLastError={2}",
-                    name, type, Marshal.GetLastWin32Error());
+                var message =
+                    $"LoadResource couldn't load resource '{name}' of type '{type}'. GetLastError={Marshal.GetLastWin32Error()}";
 
                 throw new Win32Exception(message);
             }
@@ -171,8 +168,8 @@ namespace ExcelDnaUnpack.ResourceHelpers
             var resourceHandleLock = LockResource(resourceHandleLoad);
             if (resourceHandleLock == IntPtr.Zero)
             {
-                var message = string.Format("LockResource couldn't lock resource '{0}' of type '{1}'. GetLastError={2}",
-                    name, type, Marshal.GetLastWin32Error());
+                var message =
+                    $"LockResource couldn't lock resource '{name}' of type '{type}'. GetLastError={Marshal.GetLastWin32Error()}";
 
                 throw new Win32Exception(message);
             }

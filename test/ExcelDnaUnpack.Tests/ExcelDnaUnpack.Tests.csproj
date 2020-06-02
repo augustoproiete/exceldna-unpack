@@ -1,0 +1,71 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>8.0</LangVersion>
+    <AssemblyName>ExcelDnaUnpack.Tests</AssemblyName>
+    <IsPackable>false</IsPackable>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <TreatSpecificWarningsAsErrors />
+    <RootNamespace>ExcelDnaUnpack</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="*.DotSettings" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
+    <PackageReference Include="coverlet.collector" Version="1.2.1">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ExcelDnaUnpack\ExcelDnaUnpack.csproj" />
+  </ItemGroup>
+
+  <Target Name="_BuildExcelAddInTestTarget" AfterTargets="Build" BeforeTargets="PostBuildEvent;IncrementalClean;_CleanGetCurrentAndPriorFileWrites">
+    <Message Importance="high" Text="Building ExcelDnaUnpack.Tests.ExcelAddIn Test Target" />
+
+    <MSBuild Projects="$(ProjectDir)..\ExcelDnaUnpack.Tests.ExcelAddIn\ExcelDnaUnpack.Tests.ExcelAddIn.csproj"
+             Targets="Rebuild" Properties="Configuration=$(Configuration)" />
+
+    <Copy SourceFiles="$(ProjectDir)..\ExcelDnaUnpack.Tests.ExcelAddIn\bin\$(Configuration)\ExcelDnaUnpack.Tests.ExcelAddIn.dll"
+          DestinationFiles="$(OutputPath)ExcelDnaUnpack.Tests.ExcelAddIn.dll" />
+
+    <Copy SourceFiles="$(ProjectDir)..\ExcelDnaUnpack.Tests.ExcelAddIn\bin\$(Configuration)\ExcelDnaUnpack.Tests.ExcelAddIn-packed.xll"
+          DestinationFiles="$(OutputPath)ExcelDnaUnpack.Tests.ExcelAddIn-packed.xll" />
+
+    <Copy SourceFiles="$(ProjectDir)..\ExcelDnaUnpack.Tests.ExcelAddIn\bin\$(Configuration)\ExcelDnaUnpack.Tests.ExcelAddIn.xll.config"
+          DestinationFiles="$(OutputPath)ExcelDnaUnpack.Tests.ExcelAddIn.xll.config" />
+
+    <Copy SourceFiles="$(ProjectDir)..\ExcelDnaUnpack.Tests.ExcelAddIn\bin\$(Configuration)\ExcelDnaUnpack.Tests.ExcelAddIn64-packed.xll"
+          DestinationFiles="$(OutputPath)ExcelDnaUnpack.Tests.ExcelAddIn64-packed.xll" />
+
+    <Copy SourceFiles="$(ProjectDir)..\ExcelDnaUnpack.Tests.ExcelAddIn\bin\$(Configuration)\ExcelDnaUnpack.Tests.ExcelAddIn64.xll.config"
+          DestinationFiles="$(OutputPath)ExcelDnaUnpack.Tests.ExcelAddIn64.xll.config" />
+
+    <Copy SourceFiles="$(ProjectDir)..\ExcelDnaUnpack.Tests.ExcelAddIn\bin\$(Configuration)\TestImage.png"
+          DestinationFiles="$(OutputPath)TestImage.png" />
+
+    <Copy SourceFiles="$(ProjectDir)..\ExcelDnaUnpack.Tests.ExcelAddIn\bin\$(Configuration)\SourceFileToBePacked.cs"
+          DestinationFiles="$(OutputPath)SourceFileToBePacked.cs" />
+
+    <ItemGroup>
+      <FileWrites Include="$(OutputPath)ExcelDnaUnpack.Tests.ExcelAddIn.dll" />
+      <FileWrites Include="$(OutputPath)ExcelDnaUnpack.Tests.ExcelAddIn-packed.xll" />
+      <FileWrites Include="$(OutputPath)ExcelDnaUnpack.Tests.ExcelAddIn.xll.config" />
+      <FileWrites Include="$(OutputPath)ExcelDnaUnpack.Tests.ExcelAddIn64-packed.xll" />
+      <FileWrites Include="$(OutputPath)ExcelDnaUnpack.Tests.ExcelAddIn64.xll.config" />
+      <FileWrites Include="$(OutputPath)TestImage.png" />
+      <FileWrites Include="$(OutputPath)SourceFileToBePacked.cs" />
+    </ItemGroup>
+  </Target>
+
+</Project>

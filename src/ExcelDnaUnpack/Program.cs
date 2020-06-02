@@ -7,18 +7,20 @@ using SevenZip.Compression.LZMA;
 
 namespace ExcelDnaUnpack
 {
-    internal class Program
+    public class Program
     {
         private static string _xllFile;
         private static bool _overwrite;
         private static string _outFolder;
 
-        internal static int Main(string[] args)
+        public static int Main(string[] args)
         {
             try
             {
-                var appVersion = typeof(Program).Assembly.GetCustomAttributes(true).OfType<AssemblyFileVersionAttribute>().Single().Version;
-                var appTitle = string.Format("Excel-DNA Unpack Tool, version {0}", appVersion);
+                var appVersion = typeof(Program).Assembly.GetCustomAttributes(true)
+                    .OfType<AssemblyFileVersionAttribute>().Single().Version;
+
+                var appTitle = $"Excel-DNA Unpack Tool, version {appVersion}";
 
                 Console.WriteLine(appTitle);
                 Console.WriteLine();
@@ -63,7 +65,7 @@ namespace ExcelDnaUnpack
 
             if (!File.Exists(_xllFile))
             {
-                throw new ApplicationException(string.Format("The XLL file '{0}' doesn't exist.", _xllFile));
+                throw new ApplicationException($"The XLL file '{_xllFile}' doesn't exist.");
             }
 
             if (string.IsNullOrWhiteSpace(_outFolder))
@@ -99,7 +101,8 @@ namespace ExcelDnaUnpack
                     if (File.Exists(outputFilePath) && !_overwrite)
                     {
                         Console.WriteLine("Error");
-                        throw new ApplicationException(string.Format("The file {0} already exists and --overwrite was not specified", outputFileName));
+                        throw new ApplicationException(
+                            $"The file {outputFileName} already exists and --overwrite was not specified");
                     }
 
                     using (var stream = new FileStream(outputFilePath, FileMode.Create))
@@ -142,53 +145,53 @@ namespace ExcelDnaUnpack
             switch (resource.Type.ToUpperInvariant())
             {
                 case "DNA":
-                {
-                    fileName += ".dna";
-                    break;
-                }
+                    {
+                        fileName += ".dna";
+                        break;
+                    }
 
                 case "ASSEMBLY":
                 case "ASSEMBLY_LZMA":
-                {
-                    fileName += ".dll";
-                    break;
-                }
-
-                case "TYPELIB":
-                {
-                    fileName += ".tlb";
-                    break;
-                }
-
-                case "CONFIG":
-                {
-                    fileName += ".config";
-                    break;
-                }
-
-                default:
-                {
-                    var extension = Path.GetExtension(fileName);
-
-                    if (!string.IsNullOrWhiteSpace(extension))
                     {
-                        switch (extension.ToUpperInvariant())
-                        {
-                            case ".CS":
-                            case ".VB":
-                            case ".DNA":
-                            case ".PNG":
-                            case ".JPG":
-                            case ".GIF":
-                            {
-                                fileName = Path.ChangeExtension(fileName, extension.ToLowerInvariant());
-                                break;
-                            }
-                        }
+                        fileName += ".dll";
+                        break;
                     }
 
-                    break;
-                }
+                case "TYPELIB":
+                    {
+                        fileName += ".tlb";
+                        break;
+                    }
+
+                case "CONFIG":
+                    {
+                        fileName += ".config";
+                        break;
+                    }
+
+                default:
+                    {
+                        var extension = Path.GetExtension(fileName);
+
+                        if (!string.IsNullOrWhiteSpace(extension))
+                        {
+                            switch (extension.ToUpperInvariant())
+                            {
+                                case ".CS":
+                                case ".VB":
+                                case ".DNA":
+                                case ".PNG":
+                                case ".JPG":
+                                case ".GIF":
+                                    {
+                                        fileName = Path.ChangeExtension(fileName, extension.ToLowerInvariant());
+                                        break;
+                                    }
+                            }
+                        }
+
+                        break;
+                    }
             }
 
             return fileName;

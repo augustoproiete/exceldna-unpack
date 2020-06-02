@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelDnaUnpack", "src\ExcelDnaUnpack\ExcelDnaUnpack.csproj", "{F772CD1D-70EF-4B5C-B16A-B9CFE270AF6A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F9DCBB40-DE0F-4232-B33A-9393E4260BDC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{10908DF3-F4E4-4A9D-8A30-667F36F79831}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelDnaUnpack", "src\ExcelDnaUnpack\ExcelDnaUnpack.csproj", "{C16C7F3C-F66E-46B2-9811-D0E3D1F30C5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelDnaUnpack.IntegrationTests", "tests\ExcelDnaUnpack.IntegrationTests\ExcelDnaUnpack.IntegrationTests.csproj", "{D0352336-2784-4A55-AEB6-592A5433A244}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0012AB44-32A8-4CA8-A1F0-BD498DB9063D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelDnaUnpack.Tests.ExcelAddIn", "test\ExcelDnaUnpack.Tests.ExcelAddIn\ExcelDnaUnpack.Tests.ExcelAddIn.csproj", "{F8F66952-0B2B-445F-88AE-9D63B86870ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelDnaUnpack.Tests", "test\ExcelDnaUnpack.Tests\ExcelDnaUnpack.Tests.csproj", "{95A69738-5442-4556-BBE7-012CA33E95F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,19 +19,28 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F772CD1D-70EF-4B5C-B16A-B9CFE270AF6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F772CD1D-70EF-4B5C-B16A-B9CFE270AF6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F772CD1D-70EF-4B5C-B16A-B9CFE270AF6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F772CD1D-70EF-4B5C-B16A-B9CFE270AF6A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D0352336-2784-4A55-AEB6-592A5433A244}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0352336-2784-4A55-AEB6-592A5433A244}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0352336-2784-4A55-AEB6-592A5433A244}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0352336-2784-4A55-AEB6-592A5433A244}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C16C7F3C-F66E-46B2-9811-D0E3D1F30C5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C16C7F3C-F66E-46B2-9811-D0E3D1F30C5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C16C7F3C-F66E-46B2-9811-D0E3D1F30C5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C16C7F3C-F66E-46B2-9811-D0E3D1F30C5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8F66952-0B2B-445F-88AE-9D63B86870ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8F66952-0B2B-445F-88AE-9D63B86870ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8F66952-0B2B-445F-88AE-9D63B86870ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8F66952-0B2B-445F-88AE-9D63B86870ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95A69738-5442-4556-BBE7-012CA33E95F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95A69738-5442-4556-BBE7-012CA33E95F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95A69738-5442-4556-BBE7-012CA33E95F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95A69738-5442-4556-BBE7-012CA33E95F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D0352336-2784-4A55-AEB6-592A5433A244} = {10908DF3-F4E4-4A9D-8A30-667F36F79831}
+		{C16C7F3C-F66E-46B2-9811-D0E3D1F30C5A} = {F9DCBB40-DE0F-4232-B33A-9393E4260BDC}
+		{F8F66952-0B2B-445F-88AE-9D63B86870ED} = {0012AB44-32A8-4CA8-A1F0-BD498DB9063D}
+		{95A69738-5442-4556-BBE7-012CA33E95F1} = {0012AB44-32A8-4CA8-A1F0-BD498DB9063D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {962B460C-0FB6-4A75-B6B4-7C3655C20D34}
 	EndGlobalSection
 EndGlobal

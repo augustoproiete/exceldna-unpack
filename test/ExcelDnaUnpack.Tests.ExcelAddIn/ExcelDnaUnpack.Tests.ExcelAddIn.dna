@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DnaLibrary Name="ExcelDnaUnpack.Tests.ExcelAddIn Add-In" RuntimeVersion="v4.0" xmlns="http://schemas.excel-dna.net/addin/2018/05/dnalibrary">
+  <ExternalLibrary Path="ExcelDnaUnpack.Tests.ExcelAddIn.dll" ExplicitExports="false" LoadFromBytes="true" Pack="true" IncludePdb="false" />
+
+  <Project Language="C#">
+    <SourceItem Path="SourceFileToBePacked.cs" Pack="true" />
+  </Project>
+
+  <Image Name="TestImage" Path="TestImage.png" Pack="true" />
+
+  <![CDATA[
+        Public Module MyVBFunctions
+
+            Function AddNumbersInVb(x, y)
+                AddNumbersInVb = x + y
+            End Function
+
+        End Module
+    ]]>
+</DnaLibrary>
