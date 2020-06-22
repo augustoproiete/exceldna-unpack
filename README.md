@@ -2,6 +2,8 @@
 
 ExcelDna-Unpack is a command-line utility to extract the contents of Excel-DNA add-ins that have been packed with ExcelDnaPack
 
+![ExcelDna-Unpack Screenshot](assets/exceldna-unpack-screenshot.png)
+
 ## Give a Star! :star:
 
 If you like or are using this project please give it a star. Thanks!
