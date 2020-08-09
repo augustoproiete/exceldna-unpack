@@ -1,0 +1,17 @@
+# EditorConfig is awesome: http://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+[*]
+end_of_line = unset
+trim_trailing_whitespace = true
+insert_final_newline = true
+indent_style = space
+indent_size = 4
+
+[*.{xml,dna,config,nuspec,csproj,vcxproj,vcproj,props,targets,ps1,resx}]
+indent_size = 2
+
+[*.{dotsettings}]
+end_of_line = lf
