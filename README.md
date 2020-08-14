@@ -1,14 +1,28 @@
-# ExcelDna-Unpack [![NuGet Version](http://img.shields.io/nuget/v/exceldna-unpack.svg?style=flat)](https://www.nuget.org/packages/exceldna-unpack) [![Stack Overflow](https://img.shields.io/badge/stack%20overflow-excel--dna-orange.svg)](http://stackoverflow.com/questions/tagged/excel-dna)
+| README.md |
+|:---|
 
-ExcelDna-Unpack is a command-line utility to extract the contents of Excel-DNA add-ins that have been packed with ExcelDnaPack
+<div align="center">
+
+<img src="assets/exceldna-unpack-nuget.png" alt="ExcelDna-Unpack" width="100" />
+
+</div>
+
+<h1 align="center">ExcelDna-Unpack</h1>
+<div align="center">
+
+Command-line utility to extract the contents of Excel-DNA add-ins that have been packed with ExcelDnaPack
+
+[![NuGet Version](http://img.shields.io/nuget/v/exceldna-unpack.svg?style=flat)](https://www.nuget.org/packages/exceldna-unpack) [![Stack Overflow](https://img.shields.io/badge/stack%20overflow-excel--dna-orange.svg)](http://stackoverflow.com/questions/tagged/excel-dna)
 
 ![ExcelDna-Unpack Screenshot](assets/exceldna-unpack-screenshot.png)
+
+</div>
 
 ## Give a Star! :star:
 
 If you like or are using this project please give it a star. Thanks!
 
-## Getting Started
+## Getting Started :rocket:
 
 ExcelDna-Unpack can be downloaded as a standalone and portable executable, or installed as a [.NET Core tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools).
 
