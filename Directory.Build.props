@@ -1,0 +1,12 @@
+﻿<Project>
+
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Features>strict</Features>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SourceRoot Include="$(MSBuildThisFileDirectory)/"/>
+  </ItemGroup>
+
+</Project>

@@ -132,7 +132,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Security.Permissions;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -591,7 +590,9 @@ namespace ExcelDnaUnpack
             get { return option; }
         }
 
-        [SecurityPermission(SecurityAction.LinkDemand, SerializationFormatter = true)]
+#if SECURITY_PERMISSION
+        [System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter = true)]
+#endif
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             base.GetObjectData(info, context);
