@@ -30,7 +30,7 @@
     <PackageReleaseNotes>https://github.com/augustoproiete/exceldna-unpack/releases/tag/v$(Version)</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/augustoproiete/exceldna-unpack</RepositoryUrl>
-    <Copyright>Copyright (c) 2014-2020 C. Augusto Proiete &amp; Contributors - Provided under the Apache License, Version 2.0</Copyright>
+    <Copyright>Copyright (c) 2014-2021 C. Augusto Proiete &amp; Contributors - Provided under the Apache License, Version 2.0</Copyright>
 
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>

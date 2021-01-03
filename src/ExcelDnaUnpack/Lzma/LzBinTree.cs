@@ -1,4 +1,4 @@
-// LzBinTree.cs
+﻿// LzBinTree.cs
 
 using System;
 

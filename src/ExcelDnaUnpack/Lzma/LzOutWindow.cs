@@ -1,4 +1,4 @@
-// LzOutWindow.cs
+﻿// LzOutWindow.cs
 
 namespace SevenZip.Compression.LZ
 {

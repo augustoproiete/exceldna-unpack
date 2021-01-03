@@ -1,4 +1,4 @@
-// InBuffer.cs
+﻿// InBuffer.cs
 
 namespace SevenZip.Buffer
 {

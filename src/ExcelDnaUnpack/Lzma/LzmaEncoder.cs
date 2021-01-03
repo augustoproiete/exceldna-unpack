@@ -1,4 +1,4 @@
-// LzmaEncoder.cs
+﻿// LzmaEncoder.cs
 
 using System;
 

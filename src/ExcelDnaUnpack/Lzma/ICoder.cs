@@ -1,4 +1,4 @@
-// ICoder.h
+﻿// ICoder.h
 
 using System;
 

@@ -1,4 +1,4 @@
-// This file is from Peter Bromberg - 'Using Compressed Resources in .NET with LZMA (7-Zip) Compression'
+﻿// This file is from Peter Bromberg - 'Using Compressed Resources in .NET with LZMA (7-Zip) Compression'
 
 using System;
 using System.IO;

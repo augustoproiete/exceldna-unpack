@@ -1,4 +1,4 @@
-// OutBuffer.cs
+﻿// OutBuffer.cs
 
 namespace SevenZip.Buffer
 {

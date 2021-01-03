@@ -70,4 +70,4 @@ Click on the [Releases](https://github.com/augustoproiete/exceldna-unpack/releas
 
 ---
 
-_Copyright &copy; 2014-2020 C. Augusto Proiete & Contributors - Provided under the [Apache License, Version 2.0](LICENSE)._
+_Copyright &copy; 2014-2021 C. Augusto Proiete & Contributors - Provided under the [Apache License, Version 2.0](LICENSE)._

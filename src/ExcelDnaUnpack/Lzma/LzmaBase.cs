@@ -1,4 +1,4 @@
-// LzmaBase.cs
+﻿// LzmaBase.cs
 
 namespace SevenZip.Compression.LZMA
 {

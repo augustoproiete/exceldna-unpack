@@ -1,4 +1,4 @@
-// LzInWindow.cs
+﻿// LzInWindow.cs
 
 using System;
 

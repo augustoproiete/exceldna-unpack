@@ -1,4 +1,4 @@
-// IMatchFinder.cs
+﻿// IMatchFinder.cs
 
 using System;
 
