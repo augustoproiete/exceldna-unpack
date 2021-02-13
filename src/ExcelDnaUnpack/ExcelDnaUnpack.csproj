@@ -3,12 +3,22 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFrameworks>net5.0;netcoreapp3.1;netcoreapp2.1</TargetFrameworks>
-    <AssemblyName>exceldna-unpack</AssemblyName>
     <RootNamespace>ExcelDnaUnpack</RootNamespace>
 
+    <AssemblyName>exceldna-unpack</AssemblyName>
     <AssemblyOriginatorKeyFile>../../assets/exceldna-unpack.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+    <GenerateAssemblyVersionAttribute>true</GenerateAssemblyVersionAttribute>
+    <GenerateAssemblyFileVersionAttribute>true</GenerateAssemblyFileVersionAttribute>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <DebugType>portable</DebugType>
+    <IncludeSymbols>true</IncludeSymbols>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 
     <ProductName>ExcelDna-Unpack</ProductName>
     <ProductUrl>https://github.com/augustoproiete/exceldna-unpack</ProductUrl>
@@ -27,16 +37,12 @@
     <PackageIconUrl>https://raw.githubusercontent.com/augustoproiete/exceldna-unpack/master/assets/exceldna-unpack-nuget.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/augustoproiete/exceldna-unpack</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageReleaseNotes>https://github.com/augustoproiete/exceldna-unpack/releases/tag/v$(Version)</PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/augustoproiete/exceldna-unpack/releases</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/augustoproiete/exceldna-unpack</RepositoryUrl>
+    <RepositoryUrl>https://github.com/augustoproiete/exceldna-unpack.git</RepositoryUrl>
     <Copyright>Copyright (c) 2014-2021 C. Augusto Proiete &amp; Contributors - Provided under the Apache License, Version 2.0</Copyright>
 
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-
+    <NoWarn>$(NoWarn);NU5048</NoWarn>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <TreatSpecificWarningsAsErrors />
   </PropertyGroup>

@@ -1,13 +1,16 @@
+#tool "nuget:?package=7-Zip.CommandLine&version=18.1.0"
+
 #addin "nuget:?package=Cake.MinVer&version=1.0.0"
 #addin "nuget:?package=Cake.Args&version=1.0.0"
+#addin "nuget:?package=Cake.7zip&version=1.0.1"
 
-var target       = ArgumentOrDefault<string>("target") ?? "pack";
+var target       = ArgumentOrDefault<string>("target") ?? "publish";
 var buildVersion = MinVer(s => s.WithTagPrefix("v").WithDefaultPreReleasePhase("preview"));
 
 Task("clean")
     .Does(() =>
 {
-    CleanDirectory("./build/artifacts");
+    CleanDirectories("./artifacts/**");
     CleanDirectories("./src/**/bin");
     CleanDirectories("./src/**/obj");
     CleanDirectories("./test/**/bin");
@@ -26,29 +29,16 @@ Task("restore")
 
 Task("build")
     .IsDependentOn("restore")
-    .Does(() =>
+    .DoesForEach(new[] { "Debug", "Release" }, (configuration) =>
 {
-    DotNetCoreBuild("./exceldna-unpack.sln", new DotNetCoreBuildSettings
-    {
-        Configuration = "Debug",
-        NoRestore = true,
-        NoIncremental = false,
-        ArgumentCustomization = args =>
-            args.AppendQuoted($"-p:Version={buildVersion.Version}")
-                .AppendQuoted($"-p:FileVersion={buildVersion.FileVersion}")
-                .AppendQuoted($"-p:ContinuousIntegrationBuild=true")
-    });
-
-    DotNetCoreBuild("./exceldna-unpack.sln", new DotNetCoreBuildSettings
-    {
-        Configuration = "Release",
-        NoRestore = true,
-        NoIncremental = false,
-        ArgumentCustomization = args =>
-            args.AppendQuoted($"-p:Version={buildVersion.Version}")
-                .AppendQuoted($"-p:FileVersion={buildVersion.FileVersion}")
-                .AppendQuoted($"-p:ContinuousIntegrationBuild=true")
-    });
+    MSBuild("./exceldna-unpack.sln", settings => settings
+        .SetConfiguration(configuration)
+        .UseToolVersion(MSBuildToolVersion.VS2019)
+        .WithTarget("Rebuild")
+        .WithProperty("Version", buildVersion.Version)
+        .WithProperty("FileVersion", buildVersion.FileVersion)
+        .WithProperty("ContinuousIntegrationBuild", "true")
+    );
 });
 
 Task("test")
@@ -73,16 +63,16 @@ Task("pack")
     .IsDependentOn("test")
     .Does(() =>
 {
-    var releaseNotes = $"https://github.com/augustoproiete/ookii-dialogs-wpf/releases/tag/v{buildVersion.Version}";
+    var releaseNotes = $"https://github.com/augustoproiete/exceldna-unpack/releases/tag/v{buildVersion.Version}";
 
-    DotNetCorePack("./src/exceldna-unpack/exceldna-unpack.csproj", new DotNetCorePackSettings
+    DotNetCorePack("./src/ExcelDnaUnpack/ExcelDnaUnpack.csproj", new DotNetCorePackSettings
     {
         Configuration = "Release",
         NoRestore = true,
         NoBuild = true,
         IncludeSymbols = true,
         IncludeSource = true,
-        OutputDirectory = "./build/artifacts",
+        OutputDirectory = "./artifacts/nuget",
         ArgumentCustomization = args =>
             args.AppendQuoted($"-p:Version={buildVersion.Version}")
                 .AppendQuoted($"-p:PackageReleaseNotes={releaseNotes}")
@@ -91,19 +81,47 @@ Task("pack")
 
 Task("publish")
     .IsDependentOn("pack")
-    .Does(context =>
+    .DoesForEach(new[] { "win7-x64", "win7-x86" }, (runtime) =>
 {
-    var url =  context.EnvironmentVariable("NUGET_URL");
+    DotNetCorePublish("./src/ExcelDnaUnpack/ExcelDnaUnpack.csproj", new DotNetCorePublishSettings
+    {
+        Framework = "net5.0",
+        Runtime = runtime,
+        Configuration = "Release",
+        SelfContained = true,
+        PublishSingleFile = true,
+        PublishTrimmed = true,
+        OutputDirectory = $"./artifacts/standalone/{runtime}",
+        ArgumentCustomization = args =>
+            args.AppendQuoted($"-p:Version={buildVersion.Version}")
+                .Append($"-p:IncludeNativeLibrariesForSelfExtract=true")
+    });
+
+    SevenZip(new SevenZipSettings
+    {
+        Command = new AddCommand
+        {
+            Files = GetFiles($"./artifacts/standalone/{runtime}/exceldna-unpack.*"),
+            Archive = new FilePath($"./artifacts/standalone/exceldna-unpack-{buildVersion.Version}-{runtime}.zip"),
+        }
+    });
+});
+
+Task("push")
+    .IsDependentOn("publish")
+    .Does(() =>
+{
+    var url =  EnvironmentVariable("NUGET_URL");
     if (string.IsNullOrWhiteSpace(url))
     {
-        context.Information("No NuGet URL specified. Skipping publishing of NuGet packages");
+        Information("No NuGet URL specified. Skipping publishing of NuGet packages");
         return;
     }
 
-    var apiKey =  context.EnvironmentVariable("NUGET_API_KEY");
+    var apiKey =  EnvironmentVariable("NUGET_API_KEY");
     if (string.IsNullOrWhiteSpace(apiKey))
     {
-        context.Information("No NuGet API key specified. Skipping publishing of NuGet packages");
+        Information("No NuGet API key specified. Skipping publishing of NuGet packages");
         return;
     }
 
@@ -113,7 +131,7 @@ Task("publish")
         ApiKey = apiKey,
     };
 
-    foreach (var nugetPackageFile in GetFiles("./build/artifacts/*.nupkg"))
+    foreach (var nugetPackageFile in GetFiles("./artifacts/nuget/*.nupkg"))
     {
         DotNetCoreNuGetPush(nugetPackageFile.FullPath, nugetPushSettings);
     }
