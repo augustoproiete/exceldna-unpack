@@ -26,7 +26,7 @@
     <PackageIcon>images\icon.png</PackageIcon>
     <PackageIconUrl>https://raw.githubusercontent.com/augustoproiete/exceldna-unpack/master/assets/exceldna-unpack-nuget.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/augustoproiete/exceldna-unpack</PackageProjectUrl>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageReleaseNotes>https://github.com/augustoproiete/exceldna-unpack/releases/tag/v$(Version)</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/augustoproiete/exceldna-unpack</RepositoryUrl>
@@ -50,7 +50,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\LICENSE" Pack="true" Visible="false" PackagePath="" />
     <None Include="..\..\assets\exceldna-unpack-nuget.png" Pack="true" Visible="false" PackagePath="images\icon.png" />
   </ItemGroup>
 
