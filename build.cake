@@ -2,7 +2,7 @@
 
 #addin "nuget:?package=Cake.MinVer&version=1.0.1"
 #addin "nuget:?package=Cake.Args&version=1.0.1"
-#addin "nuget:?package=Cake.7zip&version=1.0.2"
+#addin "nuget:?package=Cake.7zip&version=1.0.3"
 
 var target       = ArgumentOrDefault<string>("target") ?? "publish";
 var buildVersion = MinVer(s => s.WithTagPrefix("v").WithDefaultPreReleasePhase("preview"));
