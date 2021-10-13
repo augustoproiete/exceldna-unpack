@@ -10,11 +10,8 @@ var buildVersion = MinVer(s => s.WithTagPrefix("v").WithDefaultPreReleasePhase("
 Task("clean")
     .Does(() =>
 {
-    CleanDirectories("./artifacts/**");
-    CleanDirectories("./src/**/bin");
-    CleanDirectories("./src/**/obj");
-    CleanDirectories("./test/**/bin");
-    CleanDirectories("./test/**/obj");
+    CleanDirectories("./artifact/**");
+    CleanDirectories("./**/^{bin,obj}");
 });
 
 Task("restore")
@@ -72,7 +69,7 @@ Task("pack")
         NoBuild = true,
         IncludeSymbols = true,
         IncludeSource = true,
-        OutputDirectory = "./artifacts/nuget",
+        OutputDirectory = "./artifact/nuget",
         MSBuildSettings = new DotNetCoreMSBuildSettings
         {
             Version = buildVersion.Version,
@@ -93,18 +90,18 @@ Task("publish")
         SelfContained = true,
         PublishSingleFile = true,
         PublishTrimmed = true,
-        OutputDirectory = $"./artifacts/standalone/{runtime}",
-        ArgumentCustomization = args =>
-            args.AppendQuoted($"-p:Version={buildVersion.Version}")
-                .Append($"-p:IncludeNativeLibrariesForSelfExtract=true")
+        OutputDirectory = $"./artifact/standalone/{runtime}",
+        MSBuildSettings = new DotNetCoreMSBuildSettings()
+            .SetVersion(buildVersion.Version)
+            .WithProperty("IncludeNativeLibrariesForSelfExtract", "true")
     });
 
     SevenZip(new SevenZipSettings
     {
         Command = new AddCommand
         {
-            Files = GetFiles($"./artifacts/standalone/{runtime}/exceldna-unpack.*"),
-            Archive = new FilePath($"./artifacts/standalone/exceldna-unpack-{buildVersion.Version}-{runtime}.zip"),
+            Files = GetFiles($"./artifact/standalone/{runtime}/exceldna-unpack.*"),
+            Archive = new FilePath($"./artifact/standalone/exceldna-unpack-{buildVersion.Version}-{runtime}.zip"),
         }
     });
 });
@@ -133,7 +130,7 @@ Task("push")
         ApiKey = apiKey,
     };
 
-    foreach (var nugetPackageFile in GetFiles("./artifacts/nuget/*.nupkg"))
+    foreach (var nugetPackageFile in GetFiles("./artifact/nuget/*.nupkg"))
     {
         DotNetCoreNuGetPush(nugetPackageFile.FullPath, nugetPushSettings);
     }
