@@ -1,3 +1,4 @@
+#tool "nuget:?package=NuGet.CommandLine&version=5.11.0"
 #tool "nuget:?package=7-Zip.CommandLine&version=18.1.0"
 
 #addin "nuget:?package=Cake.MinVer&version=1.0.1"
@@ -21,6 +22,13 @@ Task("restore")
     DotNetCoreRestore("./exceldna-unpack.sln", new DotNetCoreRestoreSettings
     {
         LockedMode = true,
+    });
+
+    NuGetRestore("./test/ExcelDnaUnpack.Tests.ExcelAddIn/ExcelDnaUnpack.Tests.ExcelAddIn.csproj", new NuGetRestoreSettings
+    {
+        NoCache = true,
+        NonInteractive = true,
+        PackagesDirectory = MakeAbsolute(new DirectoryPath("./packages")),
     });
 });
 
