@@ -3,6 +3,7 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <Features>strict</Features>
+    <CheckEolTargetFramework>false</CheckEolTargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
