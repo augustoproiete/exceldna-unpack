@@ -2,7 +2,7 @@
 #tool "nuget:?package=7-Zip.CommandLine&version=18.1.0"
 
 #addin "nuget:?package=Cake.MinVer&version=1.0.1"
-#addin "nuget:?package=Cake.Args&version=1.0.1"
+#addin "nuget:?package=Cake.Args&version=2.0.0"
 #addin "nuget:?package=Cake.7zip&version=1.0.4"
 
 var target       = ArgumentOrDefault<string>("target") ?? "publish";
