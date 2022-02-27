@@ -1,9 +1,9 @@
 #tool "nuget:?package=NuGet.CommandLine&version=6.0.0"
 #tool "nuget:?package=7-Zip.CommandLine&version=18.1.0"
 
-#addin "nuget:?package=Cake.MinVer&version=1.0.1"
-#addin "nuget:?package=Cake.Args&version=1.0.1"
-#addin "nuget:?package=Cake.7zip&version=1.0.4"
+#addin "nuget:?package=Cake.MinVer&version=2.0.0"
+#addin "nuget:?package=Cake.Args&version=2.0.0"
+#addin "nuget:?package=Cake.7zip&version=2.0.0"
 
 var target       = ArgumentOrDefault<string>("target") ?? "publish";
 var buildVersion = MinVer(s => s.WithTagPrefix("v").WithDefaultPreReleasePhase("preview"));
@@ -19,9 +19,11 @@ Task("restore")
     .IsDependentOn("clean")
     .Does(() =>
 {
-    DotNetCoreRestore("./exceldna-unpack.sln", new DotNetCoreRestoreSettings
+    NuGetRestore("./src/ExcelDnaUnpack/ExcelDnaUnpack.csproj", new NuGetRestoreSettings
     {
-        LockedMode = true,
+        NoCache = true,
+        NonInteractive = true,
+        PackagesDirectory = MakeAbsolute(new DirectoryPath("./packages")),
     });
 
     NuGetRestore("./test/ExcelDnaUnpack.Tests.ExcelAddIn/ExcelDnaUnpack.Tests.ExcelAddIn.csproj", new NuGetRestoreSettings
@@ -38,7 +40,6 @@ Task("build")
 {
     MSBuild("./exceldna-unpack.sln", settings => settings
         .SetConfiguration(configuration)
-        .UseToolVersion(MSBuildToolVersion.VS2019)
         .WithTarget("Rebuild")
         .SetVersion(buildVersion.Version)
         .SetFileVersion(buildVersion.FileVersion)
