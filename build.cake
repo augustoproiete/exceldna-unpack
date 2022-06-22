@@ -1,4 +1,4 @@
-#tool "nuget:?package=NuGet.CommandLine&version=6.2.0"
+#tool "nuget:?package=NuGet.CommandLine&version=6.2.1"
 #tool "nuget:?package=7-Zip.CommandLine&version=18.1.0"
 
 #addin "nuget:?package=Cake.MinVer&version=2.0.0"
